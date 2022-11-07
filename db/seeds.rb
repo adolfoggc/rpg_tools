@@ -15,11 +15,3 @@ adjectives = ['new', 'some', 'fresh', 'delicious', 'hazardous', 'amazing',
 def message(word)
   "#{verbs.sample} #{adjectives.sample} #{word}"
 end
-
-unless Role.any?
-  puts message('roles')
-  Role.create(name: 'Dev', description: 'Peons of development')
-  Role.create(name: 'PO', description: 'Sprint sheriffs')
-  Role.create(name: 'UX', description: 'Figma kings and queens')
-  Role.create(name: 'QA', description: 'Bugs shall not pass')
-end
