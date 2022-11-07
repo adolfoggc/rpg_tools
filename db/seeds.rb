@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-verbs = ['Adding', 'Creating', 'Craving', 'Harvesting', 'Making'
+verbs = ['Adding', 'Creating', 'Craving', 'Harvesting', 'Making',
   'Picking', 'Generating']
 
 adjectives = ['new', 'some', 'fresh', 'delicious', 'hazardous', 'amazing',
@@ -14,4 +14,12 @@ adjectives = ['new', 'some', 'fresh', 'delicious', 'hazardous', 'amazing',
 
 def message(word)
   "#{verbs.sample} #{adjectives.sample} #{word}"
+end
+
+unless Role.any?
+  puts message('roles')
+  Role.create(name: 'Dev', description: 'Peons of development')
+  Role.create(name: 'PO', description: 'Sprint sheriffs')
+  Role.create(name: 'UX', description: 'Figma kings and queens')
+  Role.create(name: 'QA', description: 'Bugs shall not pass')
 end
