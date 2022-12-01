@@ -1,0 +1,29 @@
+<body class="bg-gradient-primary">
+  <div class="container">
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <% if controller.controller_name == 'registrations' %>
+          <%= render 'layouts/session/register' %>
+        <% else %>
+          <%= render 'layouts/session/login' %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <%= javascript_include_tag "vendor/jquery.min.js" %>
+  <%= javascript_include_tag "vendor/bootstrap.bundle.min.js" %>
+
+  <!-- Core plugin JavaScript->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>-->
+  <%= javascript_include_tag "jquery_easing/jquery.easing.min.js" %>
+
+  <!-- Custom scripts for all pages-->
+  <%= javascript_include_tag "sb-admin-2.min.js" %>
+
+</body>
+
+</html>

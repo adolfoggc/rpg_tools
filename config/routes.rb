@@ -4,4 +4,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+
+  authenticate :user do
+    root 'dashboard#home'
+  end
+
+  authenticated :user do
+    get '/', to: 'dashboard#home', as: 'auth_home'
+  end
+
 end
