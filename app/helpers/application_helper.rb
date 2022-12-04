@@ -1,5 +1,6 @@
 module ApplicationHelper
 
+  #element helpers
   def value_card(text, value, style, icon)
     html =  '<div class="col-xl-3 col-md-6 mb-4">'
     html +=   '<div class="card border-left-' + style + ' shadow h-100 py-2">'
@@ -87,5 +88,42 @@ module ApplicationHelper
     html +=    '</div>'
     html +=  '</div>'
     html.html_safe
+  end
+    
+  #menu helpers
+  def sidebar_element(name, icon, path)
+    html =  '<li class="nav-item">'
+    html +=   '<a class="nav-link" href=' + path + '>'
+    html +=     '<i class="fas fa-fw ' + icon +'"></i>' #fa-table
+    html +=     '<span>' + name + '</span></a>'
+    html += '</li>'
+    html.html_safe
+  end
+
+  def collapse_elements(name, icon, submenu_section, submenu_names, submenu_paths)
+    current_collapse = collapse_count
+    html =  '<li class="nav-item">'
+    html +=   '<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_' + current_collapse + '"'
+    html +=     'aria-expanded="true" aria-controls="#collapse_' + current_collapse + '">'
+    html +=     '<i class="fas fa-fw ' + icon + '"></i>'
+    html +=     '<span>' + name + '</span>'
+    html +=   '</a>'
+    html +=   '<div id="collapse_' + current_collapse + '" class="collapse" aria-labelledby="heading_' + current_collapse + '" data-parent="#accordionSidebar">'
+    html +=     '<div class="bg-white py-2 collapse-inner rounded">'
+    submenu_section.each_with_index do |section, s| 
+      html +=       '<h6 class="collapse-header">' + section + '</h6>'
+                      submenu_names[s].each_with_index do |names, n|
+        html +=       '<a class="collapse-item" href="' + submenu_paths[s][n] + '">' + name + '</a>'
+                      end
+    end
+    html +=     '</div>'
+    html +=   '</div>'
+    html += '</li>'
+    html.html_safe
+  end
+
+  def collapse_count
+    @collapse += 1
+    @collapse.to_s
   end
 end
