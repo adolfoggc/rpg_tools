@@ -92,10 +92,10 @@ module ApplicationHelper
     
   #menu helpers
   def sidebar_element(name, icon, path)
-    html =  '<li class="nav-item">'
+    html =  '<li class="nav-item '+ check_current_path(path) +'">'
     html +=   '<a class="nav-link" href=' + path + '>'
-    html +=     '<i class="fas fa-fw ' + icon +'"></i>' #fa-table
-    html +=     '<span>' + name + '</span></a>'
+    html +=     '<i class="fas fa-fw ' + icon +'"></i>'
+    html +=     '&nbsp<span>' + name + '</span></a>'
     html += '</li>'
     html.html_safe
   end
@@ -103,10 +103,10 @@ module ApplicationHelper
   def collapse_elements(name, icon, submenu_section, submenu_names, submenu_paths)
     current_collapse = collapse_count
     html =  '<li class="nav-item">'
-    html +=   '<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_' + current_collapse + '"'
+    html +=   '<a class="nav-link ' +  + ' collapsed" href="#" data-toggle="collapse" data-target="#collapse_' + current_collapse + '"'
     html +=     'aria-expanded="true" aria-controls="#collapse_' + current_collapse + '">'
     html +=     '<i class="fas fa-fw ' + icon + '"></i>'
-    html +=     '<span>' + name + '</span>'
+    html +=     '&nbsp<span>' + name + '</span>'
     html +=   '</a>'
     html +=   '<div id="collapse_' + current_collapse + '" class="collapse" aria-labelledby="heading_' + current_collapse + '" data-parent="#accordionSidebar">'
     html +=     '<div class="bg-white py-2 collapse-inner rounded">'
@@ -134,5 +134,17 @@ module ApplicationHelper
   def collapse_count
     @collapse += 1
     @collapse.to_s
+  end
+
+  def check_current_path(path)
+    if path.instance_of?(Array)
+      path.flatten.each do |p|
+        return 'active' if current_page?(p)
+      end
+    else
+      return 'active' if current_page?(path)
+    end
+
+    ''
   end
 end
