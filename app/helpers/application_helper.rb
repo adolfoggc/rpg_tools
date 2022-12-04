@@ -130,6 +130,36 @@ module ApplicationHelper
     html.html_safe
   end
 
+  #topbar helpers
+  def alert_helper(text, date, style, icon)
+    html  = '<a class="dropdown-item d-flex align-items-center" href="#">'
+    html +=   '<div class="mr-3">'
+    html +=     '<div class="icon-circle ' + style +'">'
+    html +=       '<i class="fas ' + icon + ' text-white"></i>'
+    html +=     '</div>'
+    html +=   '</div>'
+    html +=   '<div>'
+    html +=     '<div class="small text-gray-500">' + date.to_s + '</div>'
+    html +=     '<span class="font-weight">' + text + '</span>'
+    html +=   '</div>'
+    html += '</a>'
+    html.html_safe
+  end
+
+  def message_helper(name, text, status, img, passed_time)
+    html  = '<a class="dropdown-item d-flex align-items-center" href="#">'
+    html +=   '<div class="dropdown-list-image mr-3">'
+    html +=     image_tag(img, class: "rounded-circle")
+    html +=     '<div class="status-indicator ' + status +'"></div>'
+    html +=   '</div>'
+    html +=   '<div class="font-weight-bold">'
+    html +=     '<div class="text-truncate">' + text + '</div>'
+    html +=     '<div class="small text-gray-500">' + name + ' . ' + passed_time + '</div>'
+    html +=   '</div>'
+    html += '</a>'
+    html.html_safe
+  end
+
   private
   def collapse_count
     @collapse += 1
