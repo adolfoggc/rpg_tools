@@ -122,6 +122,15 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def sidebar_section(section_name)
+    html  = '<hr class="sidebar-divider">'
+    html += '<div class="sidebar-heading">'
+    html +=   section_name
+    html += '</div>'
+    html.html_safe
+  end
+
+  private
   def collapse_count
     @collapse += 1
     @collapse.to_s
