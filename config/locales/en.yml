@@ -31,3 +31,12 @@
 
 en:
   hello: "Hello world"
+  towns: "Cidades"
+  thorp: "Lugarejo"
+  hamlet: "Povoado" 
+  village: "Aldeia"
+  small_town: "Vila Pequena"
+  large_town: "Vila Grande"
+  small_city: "Cidade Pequena"
+  large_city: "Cidade Grande"
+  metropolis: "Metrópole"
