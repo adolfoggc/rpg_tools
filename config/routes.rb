@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :shops
   resources :town_details
   resources :towns
   devise_for :users
