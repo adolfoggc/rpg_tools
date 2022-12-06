@@ -14,3 +14,12 @@ def message(word)
     'incredible', 'magic', 'special', 'spatial', 'orthopedic', 'shiny', 'tasty']
   "#{verbs.sample} #{adjectives.sample} #{word}"
 end
+
+puts 'Seeds: Starting...'
+
+if Town.all.cout == 0
+  message(I18n.t('towns'))
+  Town.create(name: 'Morrinhos', description: 'Pequena cidade que fica em terreno irregular e próxima a uma lagoa')
+end
+
+puts 'Seeds: Finish!'
